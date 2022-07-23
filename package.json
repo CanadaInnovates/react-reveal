@@ -1,5 +1,5 @@
 {
-  "name": "react-reveal",
+  "name": "@successtar/react-reveal",
   "version": "1.2.2",
   "author": "Roman Nosov <rnosov@gmail.com>",
   "description": "Really simple way to add reveal on scroll animation to your React app.",
@@ -12,10 +12,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rnosov/react-reveal"
+    "url": "https://github.com/successtar/react-reveal"
   },
   "bugs": {
-    "url": "https://github.com/rnosov/react-reveal/issues"
+    "url": "https://github.com/successtar/react-reveal/issues"
   },
   "homepage": "https://www.react-reveal.com",
   "main": "./index.js",
@@ -23,7 +23,7 @@
     "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "react": "^15.3.0 || ^16.0.0"
+    "react": "^15.3.0 || ^16.0.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -55,5 +55,12 @@
     "test": "jest .",
     "prepare": "npm run build && npm run test -- -u;",
     "clean": "./node_modules/gulp/bin/gulp.js clean"
+  },
+  "resolutions": {
+    "**/**/node-gyp": "5.0.0",
+    "graceful-fs": "^4.2.9"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

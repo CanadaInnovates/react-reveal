@@ -370,7 +370,7 @@ class RevealBase extends React.Component {
     };
   }
 
-  componentWillReceiveProps (props) {
+  componentDidUpdate (props) {
     if (props.when !== undefined)
       this.isOn = !!props.when;
     if (props.fraction !== this.props.fraction)
