@@ -61,14 +61,6 @@ const
     //when: true,
     refProp: 'ref',
     //margin: 0,
-  },
-  //,
-  //contextTypes = {
-  //  stepper: object,
-  //};
-
-  contextTypes = {
-    transitionGroup: object,
   };
 
   //childContextTypes = {
@@ -370,7 +362,7 @@ class RevealBase extends React.Component {
     };
   }
 
-  componentDidUpdate (props) {
+  componentWillReceiveProps (props) {
     if (props.when !== undefined)
       this.isOn = !!props.when;
     if (props.fraction !== this.props.fraction)
@@ -516,7 +508,6 @@ class RevealBase extends React.Component {
 
 RevealBase.propTypes = propTypes;
 RevealBase.defaultProps = defaultProps;
-RevealBase.contextTypes = contextTypes;
 RevealBase.displayName = 'RevealBase';
 //RevealBase.childContextTypes = childContextTypes;
 export default RevealBase;
