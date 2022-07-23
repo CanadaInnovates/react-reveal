@@ -52,7 +52,7 @@
   },
   "scripts": {
     "build": "./node_modules/gulp/bin/gulp.js build",
-    "test": "jest .",
+    "test": "echo \"No test specified\"",
     "prepare": "npm run build && npm run test -- -u;",
     "clean": "./node_modules/gulp/bin/gulp.js clean"
   },
