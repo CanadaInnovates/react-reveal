@@ -1,3 +1,5 @@
+<h2>Disclaimer:</h2>
+<p>This is a fork of rnosov/react-reveal with fixes for warnings in React <code>^18.x.x</code></p>
 # React Reveal
 
 [React Reveal](https://www.react-reveal.com/) is
@@ -5,7 +7,7 @@ an animation framework for React. It's MIT licensed, has a tiny footprint
 and written specifically for React in ES6. It can be used to create various cool reveal
 on scroll animations in your application.
 If you liked this package, don't forget to star
-the [Github repository](https://github.com/rnosov/react-reveal).
+the [Github repository](https://github.com/successtar/react-reveal).
 
 ## Live Examples
 
@@ -19,9 +21,6 @@ A number of simple effect examples:
 
 Also, there are more complicated examples of [animated form errors](https://www.react-reveal.com/examples/advanced/form/) and a [todo app](https://www.react-reveal.com/examples/advanced/todo/).
 
-## Search Engine Visibility 
-
-`react-reveal` is regularly checked against googlebot in the Google Search Console to make sure that googlebot can see the content in the revealed elements. 
 
 ## Full Documentation
 
@@ -32,21 +31,21 @@ For a full documentation please visit [online docs](https://www.react-reveal.com
 In the command prompt run:
 
 ```sh
-npm install react-reveal --save
+npm install @successtar/react-reveal --save
 ```
 
 Alternatively you may use `yarn`:
 
 ```sh
-yarn add react-reveal
+yarn add @successtar/react-reveal
 ```
 
 ## Quick Start
 
-Import effects from [React Reveal](https://www.npmjs.com/package/react-reveal) to your project. Lets try `Zoom` effect first:
+Import effects from [React Reveal](https://www.npmjs.com/package/@successtar/react-reveal) to your project. Lets try `Zoom` effect first:
 
 ```javascript
-import Zoom from 'react-reveal/Zoom';
+import Zoom from '@successtar/react-reveal/Zoom';
 ```
 
 Place the following code somewhere in your `render` method: 
@@ -91,7 +90,7 @@ or if you want to customize `div` props:
 
 ## Revealing Images
 
-If you want to reveal an image you can wrap `img` tag with with the desired `react-reveal` effect:
+If you want to reveal an image you can wrap `img` tag with with the desired `@successtar/react-reveal` effect:
 
 ```jsx
 <Zoom>
@@ -103,7 +102,7 @@ It would be a very good idea to specify width and height of any image you wish t
 
 ## Children
 
-`react-reveal` will attach a reveal effect to each child it gets. In other words,
+`@successtar/react-reveal` will attach a reveal effect to each child it gets. In other words,
 
 ```jsx
 <Zoom>
@@ -137,11 +136,11 @@ If you don't want this to happen, you should wrap multiple children in a `div` t
 
 ## Server Side Rendering
 
-`react-reveal` supports server side rendering out of the box. In some cases, when the javascript bundle arrives much later than the HTML&CSS it might cause a flickering. To prevent this `react-reveal` will not apply reveal effects on the initial load. 
-Another option is to apply gentle fadeout effect on the initial render. You can force it on all `react-reveal` elements by placing the following code somewhere near the entry point of your app:
+`@successtar/react-reveal` supports server side rendering out of the box. In some cases, when the javascript bundle arrives much later than the HTML&CSS it might cause a flickering. To prevent this `@successtar/react-reveal` will not apply reveal effects on the initial load. 
+Another option is to apply gentle fadeout effect on the initial render. You can force it on all `@successtar/react-reveal` elements by placing the following code somewhere near the entry point of your app:
 
 ```jsx
-import config from 'react-reveal/globals';
+import config from '@successtar/react-reveal/globals';
 
 config({ ssrFadeout: true });
 ```
@@ -159,29 +158,33 @@ One last option is to use `ssrReveal` prop. If enabled, this option will suppres
 Clone the this repository using the following command:
 
 ```sh
-git clone https://github.com/rnosov/react-reveal.git
+git clone https://github.com/successtar/react-reveal.git
 ```
 
 In the cloned directory, you can run following commands:
 
 ```sh
-npm install
+yarn install
 ```
 
-Installs required node modules
+yInstalls required node modules
 
 ```sh
-npm run build
+yarn build
 ```
 
 Builds the package for production to the `dist` folder
 
 ```sh
-npm test
+yarn test
 ```
 
 Runs tests
 
 ## License
 
-Copyright © 2018 Roman Nosov. Project source code is licensed under the MIT license.
+Copyright © 2022 Hammed Olalekan Osanyinpeju.
+
+Credit: Roman Nosov 2018.
+
+Project source code is licensed under the MIT license.
