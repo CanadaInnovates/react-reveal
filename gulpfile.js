@@ -15,6 +15,7 @@ gulp.task('build', () =>
     .pipe(replace("from '../lib/wrap';", "from './wrap';"))
     .pipe(babel())
     .pipe(uglify())
+    .pipe(replace(/('|")use strict\1;/g, ''))
     .pipe(gulp.dest('./'))
 );
 
