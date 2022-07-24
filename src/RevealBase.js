@@ -84,6 +84,7 @@ class RevealBase extends React.Component {
         opacity: (!this.isOn||props.ssrReveal) && props.outEffect ? 0 : void 0,
         //visibility: props.when  ? 'visible' : 'hidden',
       },
+      prevProps: props
     };
     this.savedChild = false;
     //this.isListener = false;
@@ -104,6 +105,9 @@ class RevealBase extends React.Component {
     this.saveRef = this.saveRef.bind(this);
   }
 
+  static getDerivedStateFromProps(props, _) {
+    return {prevProps: props};
+  }
 
   saveRef(node) {
     if (this.childRef)
@@ -362,9 +366,9 @@ class RevealBase extends React.Component {
     };
   }
 
-  UNSAFE_componentWillReceiveProps (props) {
+  componentDidUpdate (props) {
     if (props.when !== undefined)
-      this.isOn = !!props.when;
+      this.isOn = !!this.state.prevProps.when;
     if (props.fraction !== this.props.fraction)
       this.observe(props, true);
     if (!this.isOn && props.onExited && ('exit' in props) && props.exit === false ) {
