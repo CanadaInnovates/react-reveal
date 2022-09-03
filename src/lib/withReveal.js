@@ -10,10 +10,7 @@
 import React from 'react';
 
 function withReveal(WrappedComponent, effect) {
-  let refProp = undefined;
-  if (typeof WrappedComponent === 'function' && typeof WrappedComponent.styledComponentId === 'string')
-    refProp = "innerRef";
-  return function({
+  return function ({
     force,
     mountOnEnter,
     unmountOnExit,
@@ -32,6 +29,11 @@ function withReveal(WrappedComponent, effect) {
     //disableObserver,
     ...props
   }) {
+    let refProp = undefined;
+    const { forwardRef, ...rest } = props;
+    if (forwardRef) {
+      refProp = "innerRef";
+    }
     return (
       <effect.type
         force={force}
@@ -53,7 +55,7 @@ function withReveal(WrappedComponent, effect) {
         {...effect.props}
         refProp={refProp}
       >
-        <WrappedComponent {...props} />
+        <WrappedComponent {...rest} />
       </effect.type>
     );
   }
