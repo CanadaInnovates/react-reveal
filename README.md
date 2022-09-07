@@ -1,13 +1,13 @@
 <h2>Disclaimer:</h2>
-<p>This is a fork of rnosov/react-reveal with fixes for warnings in React <code>^18.x.x</code></p>
+<p>This is a fork of @successtar/react-reveal with fixes for ref injection with withReveal HOC with React=<code>^18.x.x</code></p>
 # React Reveal
 
-[React Reveal](https://www.react-reveal.com/) is
-an animation framework for React. It's MIT licensed, has a tiny footprint
-and written specifically for React in ES6. It can be used to create various cool reveal
-on scroll animations in your application.
+[React Reveal by CanadaInnovates](https://github.com/CanadaInnovates/react-reveal) is an extension of [React Reveal](https://www.react-reveal.com/),
+an animation framework for React. Along with the various
+cool reveal on scroll animations, we're aimed at migrating react-reveal
+to expose hooks API for the latest cool features of React in Functional components.
 If you liked this package, don't forget to star
-the [Github repository](https://github.com/successtar/react-reveal).
+the [Github repository](https://github.com/CanadaInnovates/react-reveal).
 
 ## Live Examples
 
@@ -31,21 +31,21 @@ For a full documentation please visit [online docs](https://www.react-reveal.com
 In the command prompt run:
 
 ```sh
-npm install @successtar/react-reveal --save
+npm install @canadainnovates/react-reveal --save
 ```
 
 Alternatively you may use `yarn`:
 
 ```sh
-yarn add @successtar/react-reveal
+yarn add @canadainnovates/react-reveal
 ```
 
 ## Quick Start
 
-Import effects from [React Reveal](https://www.npmjs.com/package/@successtar/react-reveal) to your project. Lets try `Zoom` effect first:
+Import effects from [React Reveal](https://www.npmjs.com/package/@canadainnovates/react-reveal) to your project. Lets try `Zoom` effect first:
 
 ```javascript
-import Zoom from '@successtar/react-reveal/Zoom';
+import Zoom from '@canadainnovates/react-reveal/Zoom';
 ```
 
 Place the following code somewhere in your `render` method: 
@@ -90,7 +90,7 @@ or if you want to customize `div` props:
 
 ## Revealing Images
 
-If you want to reveal an image you can wrap `img` tag with with the desired `@successtar/react-reveal` effect:
+If you want to reveal an image you can wrap `img` tag with with the desired `@canadainnovates/react-reveal` effect:
 
 ```jsx
 <Zoom>
@@ -102,7 +102,7 @@ It would be a very good idea to specify width and height of any image you wish t
 
 ## Children
 
-`@successtar/react-reveal` will attach a reveal effect to each child it gets. In other words,
+`@canadainnovates/react-reveal` will attach a reveal effect to each child it gets. In other words,
 
 ```jsx
 <Zoom>
@@ -136,11 +136,11 @@ If you don't want this to happen, you should wrap multiple children in a `div` t
 
 ## Server Side Rendering
 
-`@successtar/react-reveal` supports server side rendering out of the box. In some cases, when the javascript bundle arrives much later than the HTML&CSS it might cause a flickering. To prevent this `@successtar/react-reveal` will not apply reveal effects on the initial load. 
-Another option is to apply gentle fadeout effect on the initial render. You can force it on all `@successtar/react-reveal` elements by placing the following code somewhere near the entry point of your app:
+`@canadainnovates/react-reveal` supports server side rendering out of the box. In some cases, when the javascript bundle arrives much later than the HTML&CSS it might cause a flickering. To prevent this `@canadainnovates/react-reveal` will not apply reveal effects on the initial load. 
+Another option is to apply gentle fadeout effect on the initial render. You can force it on all `@canadainnovates/react-reveal` elements by placing the following code somewhere near the entry point of your app:
 
 ```jsx
-import config from '@successtar/react-reveal/globals';
+import config from '@canadainnovates/react-reveal/globals';
 
 config({ ssrFadeout: true });
 ```
@@ -153,37 +153,43 @@ Or you you can do it on a per element basis using `ssrFadeout` prop:
 
 One last option is to use `ssrReveal` prop. If enabled, this option will suppress both flickering and `ssrFadeout` effect. The unfortunate drawback of this option is that the revealed content will appear hidden to Googlebot and to anyone with javascript switched off. So it will makes sense for images and/or headings which are duplicated elsewhere on the page.
 
-## Forking This Package
+## Ref Injection with withReveal
 
-Clone the this repository using the following command:
+withReveal will wrap your component in a div tag for it to work. If you don't want that then you can pass `forwardRef` prop to the component created with withReveal.Consider following custom React Component:
 
-```sh
-git clone https://github.com/successtar/react-reveal.git
+```jsx
+const StyledDiv = styled.li`
+  color: palevioletred;
+  font-weight: bold;
+`;
+
+function OldComponent({ innerRef, className, style }) {
+const { innerRef, children, style, ...rest } = props;
+  return (<StyledDiv ref={innerRef} style={style} {...rest}>{children}</StyledDiv>);
+  }
 ```
-
-In the cloned directory, you can run following commands:
-
-```sh
-yarn install
+And then you can inject reveal functionality using following code:
+```jsx
+const NewComponent = withReveal(OldComponent, <Fade left />);
 ```
-
-yInstalls required node modules
-
-```sh
-yarn build
+And then you can pass `forwardRef` prop to the NewComponent where you use it in the code like this:
+```jsx
+<NewComponent forwardRef>Some content of 1</NewComponent>
 ```
+## Up-coming Features
+In the pipeline, we are going the add functional hooks for all available
+reveal effects. Here is a list of hooks for simple effects:
 
-Builds the package for production to the `dist` folder
-
-```sh
-yarn test
-```
-
-Runs tests
+Fade -> useFade
+Flip -> useFlip
+Rotate -> Rotate
+Zoom -> useZoom
+Bounce -> useBounce
+Roll -> useRoll
 
 ## License
 
-Copyright © 2022 Hammed Olalekan Osanyinpeju.
+Copyright © 2022 CanadaInnovates.
 
 Credit: Roman Nosov 2018.
 
