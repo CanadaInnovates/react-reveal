@@ -1,6 +1,6 @@
 {
   "name": "@canadainnovates/react-reveal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "owner": "Mustefa <http://mustefa.com>",
   "description": "Really simple way to add reveal on scroll animation to your React app.",
   "license": "MIT",
