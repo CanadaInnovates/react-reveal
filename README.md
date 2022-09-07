@@ -1,6 +1,7 @@
 <h2>Disclaimer:</h2>
 <p>This is a fork of @successtar/react-reveal with fixes for ref injection with withReveal HOC with React=<code>^18.x.x</code></p>
-# React Reveal
+
+## React Reveal
 
 [React Reveal by CanadaInnovates](https://github.com/CanadaInnovates/react-reveal) is an extension of [React Reveal](https://www.react-reveal.com/),
 an animation framework for React. Along with the various
